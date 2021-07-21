@@ -13,60 +13,118 @@ service采用字节数组直接封装，由于service格式比较固定，所以
 封装后的yaml格式如下：
 
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
+
   name: test
+  
 spec:
+
   replicas: 2
+  
   selector:
+  
     matchLabels:
+    
       app: test
+      
   template:
+  
     metadata:
+    
       labels:
+      
         app: test
+        
     spec:
+    
       containers:
+      
       - env:
+      
         - name: server.port
+        
           value: "40021"
+          
         - name: spring.cloud.nacos.server-addr
+        
           value: 192.168.0.10:3722
+          
         - name: spring.cloud.nacos.discovery.namespace
+        
           value: 673abc66-7092-4eb1-a315-cfccf8eb1aff
+          
         - name: spring.cloud.nacos.config.namespace
+        
           value: 673abc66-7092-4eb1-a315-cfccf8eb1aff
+          
         - name: spring.cloud.nacos.config.file-extension
+        
           value: yaml
+          
         - name: spring.profiles.active
+        
           value: dev
+          
         image: 192.168.0.10:8802/api/mp:dev
+        
         imagePullPolicy: Always
+        
         name: test
+        
         volumeMounts:
+        
         - mountPath: /logs
+        
           name: a
+          
         - mountPath: /etc/localtime
+        
           name: b
+          
       volumes:
+      
       - hostPath:
+      
           path: /home/logs/test
+          
         name: a
+        
       - hostPath:
+      
           path: /etc/localtime
+          
         name: b
+        
 ---
+
 apiVersion: v1
+
 kind: Service
+
 metadata:
+
   labels:
+  
     app: test
+    
   name: test
+  
 spec:
+
   ports:
+  
   - name: test
+  - 
     port: 40021
+    
     targetPort: 40021
+    
   selector:
+  
     app: test
+    
   type: NodePort
+  
