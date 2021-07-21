@@ -1,0 +1,80 @@
+info:
+  contact: {}
+  title: kubernetes API
+  version: "1.0"
+paths:
+  /alldep:
+    get:
+      description: 详情
+      parameters:
+      - description: page
+        in: query
+        name: page
+        type: string
+      responses:
+        "200":
+          description: ""
+        "400":
+          description: ""
+      summary: 获取所有deployment
+      tags:
+      - k8s-deployment
+  /svc:
+    post:
+      description: 详情
+      parameters:
+      - description: name
+        in: query
+        name: name
+        required: true
+        type: string
+      - description: port
+        in: query
+        name: port
+        required: true
+        type: string
+      - description: replicas
+        in: query
+        name: replicas
+        required: true
+        type: string
+      - description: image
+        in: query
+        name: image
+        required: true
+        type: string
+      - description: env
+        in: query
+        name: env
+        type: string
+      - description: volumes
+        in: query
+        name: volumes
+        type: string
+      responses:
+        "200":
+          description: ""
+        "400":
+          description: ""
+      summary: 创建svc
+      tags:
+      - k8s-svc
+  /svctest:
+    post:
+      description: 详情
+      parameters:
+      - description: env可以为空
+        in: query
+        items:
+          type: string
+        name: ids
+        type: array
+      responses:
+        "200":
+          description: ""
+        "400":
+          description: ""
+      summary: 创建svctest
+      tags:
+      - k8s-svc-test
+swagger: "2.0"
