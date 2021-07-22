@@ -23,6 +23,6 @@ func Init()*gin.Engine  {
 	router.GET("/alldep",api.GetDep)
 
 	router.POST("/svc",api.Create)
-	router.POST("/svctest",api.Creat)
+
 	return router
 }
