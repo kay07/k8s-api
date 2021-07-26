@@ -107,34 +107,6 @@ var doc = `{
                     }
                 }
             }
-        },
-        "/svctest": {
-            "post": {
-                "description": "详情",
-                "tags": [
-                    "k8s-svc-test"
-                ],
-                "summary": "创建svctest",
-                "parameters": [
-                    {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "description": "env可以为空",
-                        "name": "ids",
-                        "in": "query"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": ""
-                    },
-                    "400": {
-                        "description": ""
-                    }
-                }
-            }
         }
     }
 }`

@@ -59,22 +59,4 @@ paths:
       summary: 创建svc
       tags:
       - k8s-svc
-  /svctest:
-    post:
-      description: 详情
-      parameters:
-      - description: env可以为空
-        in: query
-        items:
-          type: string
-        name: ids
-        type: array
-      responses:
-        "200":
-          description: ""
-        "400":
-          description: ""
-      summary: 创建svctest
-      tags:
-      - k8s-svc-test
 swagger: "2.0"
